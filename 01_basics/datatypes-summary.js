@@ -31,3 +31,25 @@ const myFunction = function()  {
 console.log(typeof temp); // object
 console.log(typeof myFunction); // function
 console.log(typeof names) // object
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// stack(primitive) , heap(non primitive)
+
+let myName = "Keerthiga"
+let otherName = myName
+otherName = "Keerthiga Devi"
+
+console.log(myName);
+console.log(otherName);
+
+let userOne = {
+    email: "user@gmail.com",
+    upi: "user@ybl"
+}
+
+let userTwo = userOne
+userTwo.email = "keerthiga@gmail.com"
+
+console.log(userOne.email);
+console.log(userTwo.email);
+
