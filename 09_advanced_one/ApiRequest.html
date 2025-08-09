@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body style="background-color: black ; color: white;">
+    <!-- Value	State	Description
+0	UNSENT	Client has been created. open() not called yet.
+1	OPENED	open() has been called.
+2	HEADERS_RECEIVED	send() has been called, and headers and status are available.
+3	LOADING	Downloading; responseText holds partial data.
+4	DONE	The operation is complete. -->
+
+        <div class="card" style="border: 2px solid white; height: 100px; width: 100px;">
+        </div>
+        <button class="btn">Enter</button>
+</body>
+<script>
+    const requestUrl = 'https://api.github.com/users/s-d-keerthiga-devi'
+    const xhr = new XMLHttpRequest()
+    xhr.open('GET', requestUrl)
+
+    // continously tracking
+    // xhr.onreadystatechange = function(){
+    //     console.log(xhr.readyState)
+    //     if(xhr.readyState === 4){
+    //         const data = JSON.parse(this.responseText)
+    //         console.log(data)
+    //         console.log(data.followers)
+    //     }
+    // }
+
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState === 4){
+            const data = JSON.parse(this.responseText)
+            console.log(data)
+            const Img = data.avatar_url
+            document.querySelector(".btn").addEventListener("click", function(){
+                document.querySelector('.card').innerHTML = `<img src=${Img} alt='error' style="width: 100%; height: 100%; object-fit: cover;"> </img>`
+            })
+        }
+    }
+    
+    xhr.send();
+</script>
+</html>
